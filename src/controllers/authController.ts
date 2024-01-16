@@ -3,6 +3,12 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import supabase from '../supabaseClient';
 
+declare module 'express-session' {
+    export interface SessionData {
+        user?: { [key: string]: any }; // or a more specific type
+    }
+}
+
 export const postLogin = async (req: Request, res: Response) => {
     // User authentication logic
     const { email, password } = req.body;

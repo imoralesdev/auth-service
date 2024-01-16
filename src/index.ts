@@ -1,5 +1,6 @@
 import express from 'express';
 import { sessionMiddleware } from './middleware/sessionMiddleware';
+import testRouter from './routes/testRouter';
 import authRouter from './routes/authRouter';
 
 const app = express();
@@ -11,7 +12,8 @@ app.use(express.json());
 app.use(sessionMiddleware);
 
 // Routes
-app.use('/', authRouter); // Mount the items router
+app.get('/', testRouter);
+app.use('/', authRouter); 
 
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);
