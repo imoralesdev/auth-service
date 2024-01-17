@@ -4,7 +4,7 @@ import testRouter from './routes/testRouter';
 import authRouter from './routes/authRouter';
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.use(express.json());
 
@@ -15,6 +15,6 @@ app.use(sessionMiddleware);
 app.get('/', testRouter);
 app.use('/', authRouter); 
 
-app.listen(port, () => {
+app.listen(3000, () => {
     console.log(`Server running on http://localhost:${port}`);
 });
